@@ -2,7 +2,7 @@ import { Box, Button, Typography, styled } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getAssets } from '../Redux/data/action';
+import { deleteAssetes, getAssets } from '../Redux/data/action';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
     border: "1px solid blue",
@@ -57,7 +57,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const DetailBox = styled(Box)(({ theme }) => ({
-    border: "1px solid yellow",
+    // border: "1px solid yellow",
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -68,7 +68,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
 
   const Mapdata = styled(Box)(({ theme }) => ({
-    border: "1px solid yellow",
+    border: "1px solid red",
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -79,7 +79,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
 
   const TextBox = styled(Typography)(({ theme }) => ({
-    border: "1px solid yellow",
+    // border: "1px solid yellow",
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -97,6 +97,12 @@ function Assets() {
 
     const handleAdd=()=>{
         navigate('/addassets')
+    }
+    const handleDelete=(_id)=>{
+       dispatch(deleteAssetes(_id))
+    }
+    const handleDetail=(_id)=>{
+      navigate(`/assetsdetail/${_id}`)
     }
 
 
@@ -121,8 +127,9 @@ function Assets() {
           <TextBox>Brand :{item.brand} </TextBox>
           <TextBox>Department:{item.department} </TextBox>
           <TextBox>Service:{item.service} </TextBox>
-
-
+          <Button onClick={()=>handleDelete(item._id)}>Delete</Button>
+          <Button onClick={()=>handleDetail(item._id)}>Details</Button>
+{/* {console.log("iddd",item._id)} */}
 
         </Mapdata>
       ))}

@@ -18,6 +18,30 @@ export const GET_ASSETS_REQUIEST="GET_ASSETS_REQUIEST"
 export const GET_ASSETS_SUCCESS="GET_ASSETS_SUCCESS"
 export const GET_ASSETS_FAILURE="GET_ASSETS_FAILURE"
 
+export const DELETE_ASSETS_REQUIEST="DELETE_ASSETS_REQUIEST"
+export const DELETE_ASSETS_SUCCESS="DELETE_ASSETS_SUCCESS"
+export const DELETE_ASSETS_FAILURE="DELETE_ASSETS_FAILURE"
+
+export const POST_SERVICE_REQUIEST="POST_SERVICE_REQUIEST"
+export const POST_SERVICE_SUCCESS="POST_SERVICE_SUCCESS"
+export const POST_SERVICE_FAILURE="POST_SERVICE_FAILURE"
+
+export const GET_SERVICE_REQUIEST="GET_SERVICE_REQUIEST"
+export const GET_SERVICE_SUCCESS="GET_SERVICE_SUCCESS"
+export const GET_SERVICE_FAILURE="GET_SERVICE_FAILURE"
+
+export const PATCH_SERVICE_REQUIEST="PATCH_SERVICE_REQUIEST"
+export const PATCH_SERVICE_SUCCESS="PATCH_SERVICE_SUCCESS"
+export const PATCH_SERVICE_FAILURE="PATCH_SERVICE_FAILURE"
+
+export const DELETE_SERVICE_REQUIEST="DELETE_SERVICE_REQUIEST"
+export const DELETE_SERVICE_SUCCESS="DELETE_SERVICE_SUCCESS"
+export const DELETE_SERVICE_FAILURE="DELETE_SERVICE_FAILURE"
+
+export const GET_DETAIL_REQUIEST="GET_DETAIL_REQUIEST"
+export const GET_DETAIL_SUCCESS="GET_DETAIL_SUCCESS"
+export const GET_DETAIL_FAILURE="GET_DETAIL_FAILURE"
+
 
 const postDepartmentRequiest=()=>{
     return({
@@ -33,6 +57,91 @@ const postDepartmentSuccess=(data)=>{
 const postDepartmentFailure=()=>{
     return({
         type:POST_DEPARTMENT_FAILURE
+    })
+}
+
+const getDetailRequiest=()=>{
+    return({
+        type:GET_DETAIL_REQUIEST
+    })
+}
+const getDetailSuccess=(data)=>{
+    return({
+        type:GET_DETAIL_SUCCESS,
+        payload:data
+    })
+}
+const getDetailFailure=()=>{
+    return({
+        type:GET_DETAIL_FAILURE
+    })
+}
+
+const patchServiceRequiest=()=>{
+    return({
+        type:PATCH_SERVICE_REQUIEST
+    })
+}
+const patchServiceSuccess=(data)=>{
+    return({
+        type:PATCH_SERVICE_SUCCESS,
+        payload:data
+    })
+}
+const patchServiceFailure=()=>{
+    return({
+        type:PATCH_SERVICE_FAILURE
+    })
+}
+
+const getServiceRequiest=()=>{
+    return({
+        type:GET_SERVICE_REQUIEST
+    })
+}
+const getServiceSuccess=(data)=>{
+    return({
+        type:GET_SERVICE_SUCCESS,
+        payload:data
+    })
+}
+const getServiceFailure=()=>{
+    return({
+        type:GET_SERVICE_FAILURE
+    })
+}
+
+const postServiceRequiest=()=>{
+    return({
+        type:POST_SERVICE_REQUIEST
+    })
+}
+const postServiceSuccess=(data)=>{
+    return({
+        type:POST_SERVICE_SUCCESS,
+        payload:data
+    })
+}
+const postServiceFailure=()=>{
+    return({
+        type:POST_SERVICE_FAILURE
+    })
+}
+
+const deleteAssetsRequiest=()=>{
+    return({
+        type:DELETE_ASSETS_REQUIEST
+    })
+}
+const deleteAssetsSuccess=(data)=>{
+    return({
+        type:DELETE_ASSETS_SUCCESS,
+        payload:data
+    })
+}
+const deleteAssetsFailure=()=>{
+    return({
+        type:DELETE_ASSETS_FAILURE
     })
 }
 
@@ -89,7 +198,22 @@ const postAssetsFailure=()=>{
         type:POST_ASSETS_FAILURE
     })
 }
-
+const deleteServiceRequiest=()=>{
+    return({
+        type:DELETE_SERVICE_REQUIEST
+    })
+}
+const deleteServiceSuccess=(data)=>{
+    return({
+        type:DELETE_SERVICE_SUCCESS,
+        payload:data
+    })
+}
+const deleteServiceFailure=()=>{
+    return({
+        type:DELETE_SERVICE_FAILURE
+    })
+}
 
 
 
@@ -112,6 +236,71 @@ export const postDepartment=(data)=>(dispatch)=>{
     })
     .catch((error)=>{
         dispatch(postDepartmentFailure())
+    })
+}
+
+export const getDetail=(id)=>(dispatch)=>{
+  
+    dispatch(getDetailRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
+        method:"GET",
+        
+    })
+    .then((res)=>{
+        dispatch(getDetailSuccess(res.data))
+        console.log("getDetail",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getDetailFailure())
+    })
+}
+
+export const patchService=(id)=>(dispatch)=>{
+    dispatch(patchServiceRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
+        method:"POST",
+        
+    })
+    .then((res)=>{
+        dispatch(patchServiceSuccess(res.data))
+        console.log("patchServive",res.data)
+    })
+    .catch((error)=>{
+        dispatch(patchServiceFailure())
+    })
+}
+
+export const getService=()=>(dispatch)=>{
+ 
+    dispatch(getServiceRequiest())
+    return axios({
+        url:"https://fine-cyan-pelican-cuff.cyclic.app/service",
+        method:"GET",
+    })
+    .then((res)=>{
+        dispatch(getServiceSuccess(res.data))
+        console.log("getService",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getServiceFailure())
+    })
+}
+
+export const postService=(data)=>(dispatch)=>{
+    dispatch(postServiceRequiest())
+    return axios({
+        url:"https://fine-cyan-pelican-cuff.cyclic.app/service",
+        method:"POST",
+        data
+    })
+    .then((res)=>{
+        dispatch(postServiceSuccess(res.data))
+        console.log("postService",res.data)
+    })
+    .catch((error)=>{
+        dispatch(postServiceFailure())
     })
 }
 
@@ -162,5 +351,38 @@ export const postAssets=(data)=>(dispatch)=>{
     })
     .catch((error)=>{
         dispatch(postAssetsFailure())
+    })
+}
+
+export const deleteAssetes=(id)=>(dispatch)=>{
+  
+    dispatch(deleteAssetsRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
+        method:"DELETE",
+        
+    })
+    .then((res)=>{
+        dispatch(deleteAssetsSuccess(res.data))
+        console.log("deleteAsset",res.data)
+    })
+    .catch((error)=>{
+        dispatch(deleteAssetsFailure())
+    })
+}
+
+export const deleteService=(id)=>(dispatch)=>{
+   
+    dispatch(deleteServiceRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
+        method:"DELETE",
+    })
+    .then((res)=>{
+        dispatch(deleteServiceSuccess(res.data))
+        console.log("deleteService",res.data)
+    })
+    .catch((error)=>{
+        dispatch(deleteServiceFailure())
     })
 }

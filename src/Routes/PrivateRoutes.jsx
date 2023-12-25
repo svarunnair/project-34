@@ -7,6 +7,7 @@ import Assets from '../Pages/Assets'
 import Service from '../Pages/Service'
 import Warrenty from '../Pages/Warrenty'
 import AddAssets from '../Pages/AddAssets'
+import AssetDetail from '../Pages/AssetDetail'
 
 function PrivateRoutes() {
 
@@ -25,6 +26,7 @@ function PrivateRoutes() {
 <Route path='/service' element={<Service/>}/>
 <Route path='/warrenty' element={<Warrenty/>}/>
 <Route path='/addassets' element={<AddAssets/>}/>
+<Route path='/assetsdetail/:_id' element={<AssetDetail/>}/>
 
 </Routes>
 

@@ -43,10 +43,10 @@ function AddAssets() {
         let value=e.target.value 
         setDep(value)
     }
-    const handleService=(e)=>{
-        let value=e.target.value 
-        setService(value)
-    }
+    // const handleService=(e)=>{
+    //     let value=e.target.value 
+    //     setService(value)
+    // }
     const handleBrand=(e)=>{
         let value=e.target.value 
         setBrand(value)
@@ -55,7 +55,15 @@ function AddAssets() {
         let data={
             asset_name:name,
             department:dep,
-            service:service,
+            service:[
+              {
+                description:"",
+  status:"",
+  issue:"",
+assetId:""
+
+              }
+            ],
             brand:brand
         }
         dispatch(postAssets(data))  
@@ -69,7 +77,7 @@ function AddAssets() {
       
       <Input onChange={handleName} placeholder='Asset name'/>
       <Input onChange={handleDep} placeholder='Department'/>
-      <Input onChange={handleService} placeholder='Service'/>
+      {/* <Input onChange={handleService} placeholder='Service'/> */}
       <Input onChange={handleBrand} placeholder='Brand'/>
       <Button onClick={handleSubmit}>Submit</Button>
       
