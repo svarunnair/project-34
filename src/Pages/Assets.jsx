@@ -7,7 +7,8 @@ import { deleteAssetes, getAssets } from '../Redux/data/action';
 const OuterContainer = styled(Box)(({ theme }) => ({
     border: "1px solid blue",
     display: "flex",
-    flexDirection: "column",
+   padding:50,
+    justifyContent:"center",
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -17,7 +18,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
   const InnerBox = styled(Box)(({ theme }) => ({
     border: "1px solid red",
-  
+   width:"50%",
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -57,7 +58,9 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const DetailBox = styled(Box)(({ theme }) => ({
-    // border: "1px solid yellow",
+    border: "1px solid yellow",
+    display:"grid",
+    gridTemplateColumns:"repeat(3,1fr)",
   
   
     [theme.breakpoints.down("xl")]: {},

@@ -18,6 +18,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Dashboard from './Dashboard';
+import PublicRoutes from '../Routes/PublicRoutes';
+import PrivateRoutes from '../Routes/PrivateRoutes';
 // import { mainListItems, secondaryListItems } from './listItems';
 // import Chart from './Chart';
 // import Deposits from './Deposits';
@@ -91,6 +93,8 @@ export default function Navbar() {
     setOpen(!open);
   };
 
+  const token=localStorage.getItem('token')
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -162,10 +166,10 @@ export default function Navbar() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          {/* <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              {/* <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
@@ -173,14 +177,13 @@ export default function Navbar() {
                     flexDirection: 'column',
                     height: 240,
                   }}
-                >
+                >  */}
 
-<Dashboard/>
-
+{token?<PrivateRoutes/>:<PublicRoutes/>}
 
                   {/* <Chart /> */}
-                </Paper>
-              </Grid>
+                {/* </Paper>
+              </Grid> */}
               {/* Recent Deposits */}
               {/* <Grid item xs={12} md={4} lg={3}>
                 <Paper
@@ -196,9 +199,9 @@ export default function Navbar() {
               </Grid> */}
               {/* Recent Orders */}
               
-            </Grid>
+            {/* </Grid>
             <Copyright sx={{ pt: 4 }} />
-          </Container>
+          </Container> */}
         </Box>
       </Box>
     </ThemeProvider>

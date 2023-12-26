@@ -3,10 +3,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const OuterContainer = styled(Box)(({ theme }) => ({
-  border: "1px solid red",
+
   display: "flex",
   justifyContent: "center",
-
+  paddingTop:50,
+ 
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
   [theme.breakpoints.down("md")]: {},
@@ -15,10 +16,14 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 }));
 
 const InnerContainer = styled(Box)(({ theme }) => ({
-  border: "1px solid blue",
+ 
   display: "flex",
   flexDirection: "column",
-
+  padding:50,
+  gap:20,
+  background:"#FFFAF0",
+ 
+ 
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
   [theme.breakpoints.down("md")]: {},
@@ -27,8 +32,11 @@ const InnerContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TextData = styled(Button)(({ theme }) => ({
-  border: "1px solid black",
+  border: "1px solid #1E90FF",
   width: "100%",
+  borderRadius:20,
+  padding:10,
+  ":hover":{color:"white",background:"#1E90FF"},
 
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
