@@ -129,7 +129,7 @@ function Assets() {
           <TextBox>Asset name :{item.asset_name} </TextBox>
           <TextBox>Brand :{item.brand} </TextBox>
           <TextBox>Department:{item.department} </TextBox>
-          <TextBox>Service:{item.service} </TextBox>
+     
           <Button onClick={()=>handleDelete(item._id)}>Delete</Button>
           <Button onClick={()=>handleDetail(item._id)}>Details</Button>
 {/* {console.log("iddd",item._id)} */}
