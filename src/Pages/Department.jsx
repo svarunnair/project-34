@@ -2,7 +2,7 @@ import { Box, Button, Typography, styled } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getDepartment } from "../Redux/data/action";
+import { deleteDepartment, getDepartment } from "../Redux/data/action";
 
 const OuterContainer = styled(Box)(({ theme }) => ({
   // border: "1px solid blue",
@@ -18,7 +18,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 }));
 
 const InnerContainer = styled(Box)(({ theme }) => ({
-  // border: "10px solid green",
+
   display: "flex",
   flexDirection: "column",
   justifyContent:"center",
@@ -58,6 +58,7 @@ const FirstBox = styled(Box)(({ theme }) => ({
   width:"50%",
  left:190,
  top:30,
+ ":hover":{color:"white",background:"#1E90FF"},
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {
@@ -102,6 +103,7 @@ const FirstBox = styled(Box)(({ theme }) => ({
     borderRadius:15,
     padding:20,
     gap:30,
+   
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -121,6 +123,9 @@ const FirstBox = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {},
   }));
+
+
+  
 function Department() {
     const navigate=useNavigate()
     const depData=useSelector((store)=>store.data.dep)
@@ -131,6 +136,9 @@ function Department() {
 
     const handleAdd=()=>{
         navigate('/adddepartment')
+    }
+    const handleRemove=(_id)=>{
+        dispatch(deleteDepartment(_id))
     }
 
 
@@ -150,9 +158,12 @@ function Department() {
 
 {depData.map((item)=>(
     <MapBox>
+
     <TextDetail>Department  : <ResultBox>{item.department}</ResultBox></TextDetail>
     <TextDetail>Incharge    :  <ResultBox>{item.incharge}</ResultBox></TextDetail>
     <TextDetail>Description : <ResultBox>{item.description}</ResultBox> </TextDetail>
+    <Button sx={{textTransform:"none",":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleRemove(item._id)}>Remove</Button>
+
     </MapBox>
 ))}
 

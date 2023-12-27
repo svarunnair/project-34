@@ -10,6 +10,10 @@ export const GET_DEPARTMENT_REQUIEST="GET_DEPARTMENT_REQUIEST"
 export const GET_DEPARTMENT_SUCCESS="GET_DEPARTMENT_SUCCESS"
 export const GET_DEPARTMENT_FAILURE="GET_DEPARTMENT_FAILURE"
 
+export const DELETE_DEPARTMENT_REQUIEST="DELETE_DEPARTMENT_REQUIEST"
+export const DELETE_DEPARTMENT_SUCCESS="DELETE_DEPARTMENT_SUCCESS"
+export const DELETE_DEPARTMENT_FAILURE="DELETE_DEPARTMENT_FAILURE"
+
 export const POST_ASSETS_REQUIEST="POST_ASSETS_REQUIEST"
 export const POST_ASSETS_SUCCESS="POST_ASSETS_SUCCESS"
 export const POST_ASSETS_FAILURE="POST_ASSETS_FAILURE"
@@ -57,6 +61,23 @@ const postDepartmentSuccess=(data)=>{
 const postDepartmentFailure=()=>{
     return({
         type:POST_DEPARTMENT_FAILURE
+    })
+}
+
+const deleteDepartmentRequiest=()=>{
+    return({
+        type:DELETE_DEPARTMENT_REQUIEST
+    })
+}
+const deleteDepartmentSuccess=(data)=>{
+    return({
+        type:DELETE_DEPARTMENT_SUCCESS,
+        payload:data
+    })
+}
+const deleteDepartmentFailure=()=>{
+    return({
+        type:DELETE_DEPARTMENT_FAILURE
     })
 }
 
@@ -239,6 +260,22 @@ export const postDepartment=(data)=>(dispatch)=>{
     })
 }
 
+export const deleteDepartment=(id)=>(dispatch)=>{
+    dispatch(deleteDepartmentRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/department/${id}`,
+        method:"DELETE",
+       
+    })
+    .then((res)=>{
+        dispatch(deleteDepartmentSuccess(res.data))
+        console.log("deleteDep",res.data)
+    })
+    .catch((error)=>{
+        dispatch(deleteDepartmentFailure())
+    })
+}
+
 export const getDetail=(id)=>(dispatch)=>{
   
     dispatch(getDetailRequiest())
@@ -256,12 +293,12 @@ export const getDetail=(id)=>(dispatch)=>{
     })
 }
 
-export const patchService=(id)=>(dispatch)=>{
+export const patchService=(id,data)=>(dispatch)=>{
     dispatch(patchServiceRequiest())
     return axios({
         url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
-        method:"POST",
-        
+        method:"PATCH",
+        data,
     })
     .then((res)=>{
         dispatch(patchServiceSuccess(res.data))

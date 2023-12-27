@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from '@mui/material';
+import { Box, Button, Typography, styled } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -6,7 +6,9 @@ import { getAssets, getDetail } from '../Redux/data/action';
 
 
 const OuterContainer = styled(Box)(({ theme }) => ({
-    border: "1px solid yellow",
+    
+    display:"flex",
+    justifyContent:"center",
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -16,7 +18,9 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
 
   const InnerBox = styled(Box)(({ theme }) => ({
-    border: "1px solid red",
+   
+    width:"30%",
+    
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -26,7 +30,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
 
   const TextBox = styled(Typography)(({ theme }) => ({
-    
+    textAlign:"left",
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -37,7 +41,11 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 
   const MapData = styled(Box)(({ theme }) => ({
     
-    border:"2px solid red",
+    border:"2px solid #1E90FF",
+  padding:30,
+  borderRadius:20,
+  
+  
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -50,13 +58,15 @@ function AssetDetail() {
 
     const params=useParams()
     
-    console.log("params",params._id)
+    console.log("params",params)
 
     const assetDetail=useSelector((store)=>store.data.getDetail)
     const dispatch=useDispatch()
     
 
     console.log("assettt",assetDetail)
+
+    
 
 useEffect(()=>{
    dispatch(getDetail(params._id))
@@ -68,14 +78,24 @@ useEffect(()=>{
       <InnerBox>
 
 
-{assetDetail.map((item)=>(
+      <TextBox sx={{textTransform:"uppercase",fontSize:25,textAlign:"center"}}>Detail Page</TextBox>
   <MapData>
- <TextBox> {item.asset_name}</TextBox>
- <TextBox> {item.asset_name}</TextBox>
- <TextBox> {item.asset_name}</TextBox>
+    
+ <TextBox>Asset name : {assetDetail.asset_name}</TextBox> 
+ <TextBox>Brand : {assetDetail.brand}</TextBox> 
+ <TextBox>Department : {assetDetail.department}</TextBox> 
+ {/* <TextBox> {assetDetail.service.map((item)=>(
+  <>
+  <TextBox>Service:</TextBox>
+  <TextBox>Issue :{item.issue}</TextBox>
+  <TextBox>Description :{item.description}</TextBox>
+  <TextBox>AssetId :{item. assetId}</TextBox>
   
+  </>
+ ))}</TextBox>  */}
+ 
   </MapData>
-))}
+
 
 
       </InnerBox>

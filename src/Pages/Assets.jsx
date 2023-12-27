@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { deleteAssetes, getAssets } from '../Redux/data/action';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
-    border: "1px solid blue",
+ 
     display: "flex",
    padding:50,
     justifyContent:"center",
@@ -17,8 +17,8 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const InnerBox = styled(Box)(({ theme }) => ({
-    border: "1px solid red",
-   width:"50%",
+  
+   width:"85%",
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -28,7 +28,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   }));
   
   const InnerDiv = styled(Box)(({ theme }) => ({
-    border: "1px solid red",
+   
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -38,7 +38,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const TextData = styled(Typography)(({ theme }) => ({
-    border: "1px solid red",
+    
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -48,7 +48,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const ButtonBox = styled(Button)(({ theme }) => ({
-    border: "1px solid red",
+   
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -58,26 +58,41 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
   const DetailBox = styled(Box)(({ theme }) => ({
-    border: "1px solid yellow",
+  
     display:"grid",
     gridTemplateColumns:"repeat(3,1fr)",
+    padding:30,
   
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
-    [theme.breakpoints.down("md")]: {},
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("md")]: {
+      gridTemplateColumns:"repeat(2,1fr)",
+    },
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns:"repeat(1,1fr)",
+      padding:0,
+    },
     [theme.breakpoints.down("xs")]: {},
   }));
 
   const Mapdata = styled(Box)(({ theme }) => ({
-    border: "1px solid red",
+    border: "1px solid #1E90FF",
+    borderRadius:20,
+    padding:10,
+    textAlign:"left",
+    width:"90%",
+    
+   
   
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {},
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("sm")]: {
+      padding:10,
+      width:"100%",
+    },
     [theme.breakpoints.down("xs")]: {},
   }));
 
@@ -107,6 +122,10 @@ function Assets() {
     const handleDetail=(_id)=>{
       navigate(`/assetsdetail/${_id}`)
     }
+    const handleEdit=(_id)=>{
+      navigate(`/addservice/${_id}`)
+      
+    }
 
 
     useEffect(()=>{
@@ -119,8 +138,8 @@ function Assets() {
 <InnerBox>
 
 <InnerDiv>
-    <TextData>Assets details</TextData>
-    <ButtonBox onClick={handleAdd}>Add Assets</ButtonBox>
+    <TextData sx={{textTransform:"uppercase",fontSize:25}}>Assets details</TextData>
+    <ButtonBox sx={{textTransform:"none",":hover":{background:"#1E90FF",color:"white"}}} onClick={handleAdd}>Add Assets</ButtonBox>
 
     <DetailBox>
       {assetData.map((item)=>(
@@ -130,9 +149,10 @@ function Assets() {
           <TextBox>Brand :{item.brand} </TextBox>
           <TextBox>Department:{item.department} </TextBox>
      
-          <Button onClick={()=>handleDelete(item._id)}>Delete</Button>
-          <Button onClick={()=>handleDetail(item._id)}>Details</Button>
-{/* {console.log("iddd",item._id)} */}
+          <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleDelete(item._id)}>Delete</Button>
+          <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleDetail(item._id)}>Details</Button>
+          <Button onClick={()=>handleEdit(item._id)} >Edit service</Button>
+
 
         </Mapdata>
       ))}
