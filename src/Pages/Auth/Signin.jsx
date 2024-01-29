@@ -6,7 +6,7 @@ import { postSignin } from '../../Redux/authRedux/authAction'
 
 
 const OuterContainer=styled(Box)(({theme})=>({
-border:"2px solid red",
+// border:"2px solid red",
 justifyContent:"center",
 display:"flex",
 
@@ -28,10 +28,11 @@ display:"flex",
 }))
 
 const InnerContainer=styled(Box)(({theme})=>({
-  border:"2px solid black",
+  // border:"2px solid black",
   display:"flex",
   flexDirection:"column",
   width:"50%",
+  paddingTop:100,
     [theme.breakpoints.down("xl")]:{
   
     },
@@ -50,7 +51,7 @@ const InnerContainer=styled(Box)(({theme})=>({
   }))
 
   const ButtonBox=styled(Button)(({theme})=>({
-    border:"2px solid blue",
+    // border:"2px solid blue",
       [theme.breakpoints.down("xl")]:{
     
       },
@@ -79,6 +80,8 @@ function Signin() {
  
 
   console.log("userData",data)
+
+  console.log("token",token)
   
 
   const handleEmail=(e)=>{

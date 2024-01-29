@@ -6,7 +6,7 @@ import { postSignup } from '../../Redux/authRedux/authAction'
 
 
 const OuterContainer=styled(Box)(({theme})=>({
-  border:"2px solid red",
+  // border:"2px solid red",
   justifyContent:"center",
   display:"flex",
  
@@ -28,7 +28,9 @@ const OuterContainer=styled(Box)(({theme})=>({
   }))
 
   const TextBox=styled(Typography)(({theme})=>({
-    border:"2px solid yellow",
+    // border:"2px solid yellow",
+    padding:10,
+    fontWeight:600,
       [theme.breakpoints.down("xl")]:{
     
       },
@@ -48,7 +50,7 @@ const OuterContainer=styled(Box)(({theme})=>({
 
 
     const ButtonBox=styled(Button)(({theme})=>({
-      border:"2px solid red",
+      // border:"2px solid red",
         [theme.breakpoints.down("xl")]:{
       
         },
@@ -66,11 +68,12 @@ const OuterContainer=styled(Box)(({theme})=>({
         },
       }))
     const InnerBox=styled(Box)(({theme})=>({
-      border:"2px solid black",
+      // border:"2px solid black",
       display:"flex",
       flexDirection:"column",
       width:"50%",
       justifyContent:"center",
+      paddingTop:70,
         [theme.breakpoints.down("xl")]:{
       
         },
@@ -131,19 +134,24 @@ function Signup() {
    dispatch(postSignup(data))
    navigate('/signin')
   }
+
+  const handleSignin=()=>{
+    navigate('/signin')
+  }
   
 
   return (
     <OuterContainer>
 
 <InnerBox>
-<TextBox>Signin</TextBox>
+<TextBox>Signup</TextBox>
 <Input onChange={handleHospital} placeholder='Hospital Name'/>
 <Input onChange={handleName} placeholder='Name'/>
 <Input onChange={handleMobile} placeholder='Mobile number'/>
 <Input onChange={handleEmail} placeholder='Email'/>
 <Input onChange={handlePassword} placeholder='Password'/>
 <ButtonBox onClick={handleSignup}>Signup</ButtonBox>
+<TextBox sx={{fontWeight:90,fontSize:15,cursor:"pointer"}} onClick={handleSignin}>For Signin</TextBox>
 </InnerBox>
 
     </OuterContainer>

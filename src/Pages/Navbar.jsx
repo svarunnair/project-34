@@ -20,6 +20,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Dashboard from './Dashboard';
 import PublicRoutes from '../Routes/PublicRoutes';
 import PrivateRoutes from '../Routes/PrivateRoutes';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 // import { mainListItems, secondaryListItems } from './listItems';
 // import Chart from './Chart';
 // import Deposits from './Deposits';
@@ -88,10 +90,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function Navbar() {
+  const navigate=useNavigate()
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  const handleLogout=()=>{
+    localStorage.clear()
+    navigate('/signin')
+  }
 
   const token=localStorage.getItem('token')
 
@@ -152,6 +160,7 @@ export default function Navbar() {
             <Divider sx={{ my: 1 }} />
             
           </List>
+          <Button onClick={handleLogout}>LogOut</Button>
         </Drawer>
         <Box
           component="main"
@@ -165,6 +174,7 @@ export default function Navbar() {
             overflow: 'auto',
           }}
         >
+          
           <Toolbar />
           {/* <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
