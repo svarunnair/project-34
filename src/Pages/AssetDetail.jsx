@@ -2,7 +2,7 @@ import { Box, Button, Typography, styled } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getAssets, getDetail } from '../Redux/data/action';
+import { getAssets, getDetail, getServiceData } from '../Redux/data/action';
 
 
 const OuterContainer = styled(Box)(({ theme }) => ({
@@ -57,8 +57,11 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 function AssetDetail() {
 
     const params=useParams()
+    const serviceData=useSelector((store)=>store.data.getDataService)
+
+    console.log("serviceUpdate",serviceData)
     
-    console.log("params",params)
+    console.log("paramsidd",params._id)
 
     const assetDetail=useSelector((store)=>store.data.getDetail)
     const dispatch=useDispatch()
@@ -66,6 +69,10 @@ function AssetDetail() {
 
     console.log("assettt",assetDetail)
 
+
+    useEffect(()=>{
+      dispatch(getServiceData(params._id))
+    },[])
     
 
 useEffect(()=>{

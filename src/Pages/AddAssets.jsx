@@ -5,7 +5,7 @@ import { postAssets, postService } from '../Redux/data/action';
 import { useNavigate } from 'react-router-dom';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
-    border: "1px solid red",
+    // border: "1px solid red",
     display:"flex",
     justifyContent:'center',
   
@@ -20,6 +20,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 
   const TextBox = styled(Typography)(({ theme }) => ({
  
+    padding:10,
     
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -66,7 +67,7 @@ function AddAssets() {
         setBrand(value)
     }
     const handleService=()=>{
-      navigate('/addservice')
+      navigate('')
     }
 
     const handleSubmit=()=>{

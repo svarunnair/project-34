@@ -1,4 +1,4 @@
-import { DELETE_ASSETS_FAILURE, DELETE_ASSETS_REQUIEST, DELETE_ASSETS_SUCCESS, DELETE_DEPARTMENT_FAILURE, DELETE_DEPARTMENT_REQUIEST, DELETE_DEPARTMENT_SUCCESS, DELETE_SERVICE_FAILURE, DELETE_SERVICE_REQUIEST, DELETE_SERVICE_SUCCESS, GET_ASSETS_FAILURE, GET_ASSETS_REQUIEST, GET_ASSETS_SUCCESS, GET_DEPARTMENT_FAILURE, GET_DEPARTMENT_REQUIEST, GET_DEPARTMENT_SUCCESS, GET_DETAIL_FAILURE, GET_DETAIL_REQUIEST, GET_DETAIL_SUCCESS, GET_SERVICE_FAILURE, GET_SERVICE_REQUIEST, GET_SERVICE_SUCCESS, PATCH_SERVICE_FAILURE, PATCH_SERVICE_REQUIEST, PATCH_SERVICE_SUCCESS, POST_ASSETS_FAILURE, POST_ASSETS_REQUIEST, POST_ASSETS_SUCCESS, POST_DEPARTMENT_FAILURE, POST_DEPARTMENT_REQUIEST, POST_DEPARTMENT_SUCCESS, POST_SERVICE_FAILURE, POST_SERVICE_REQUIEST, POST_SERVICE_SUCCESS } from "./action"
+import { DELETE_ASSETS_FAILURE, DELETE_ASSETS_REQUIEST, DELETE_ASSETS_SUCCESS, DELETE_DEPARTMENT_FAILURE, DELETE_DEPARTMENT_REQUIEST, DELETE_DEPARTMENT_SUCCESS, DELETE_SERVICE_FAILURE, DELETE_SERVICE_REQUIEST, DELETE_SERVICE_SUCCESS, GET_ASSETS_FAILURE, GET_ASSETS_REQUIEST, GET_ASSETS_SUCCESS, GET_DEPARTMENT_FAILURE, GET_DEPARTMENT_REQUIEST, GET_DEPARTMENT_SUCCESS, GET_DETAIL_FAILURE, GET_DETAIL_REQUIEST, GET_DETAIL_SUCCESS, GET_SERVICEDATA_FAILURE, GET_SERVICEDATA_REQUIEST, GET_SERVICEDATA_SUCCESS, GET_SERVICE_FAILURE, GET_SERVICE_REQUIEST, GET_SERVICE_SUCCESS, PATCH_ASSET_FAILURE, PATCH_ASSET_REQUIEST, PATCH_ASSET_SUCCESS, PATCH_SERVICE_FAILURE, PATCH_SERVICE_REQUIEST, PATCH_SERVICE_SUCCESS, POST_ASSETS_FAILURE, POST_ASSETS_REQUIEST, POST_ASSETS_SUCCESS, POST_DEPARTMENT_FAILURE, POST_DEPARTMENT_REQUIEST, POST_DEPARTMENT_SUCCESS, POST_SERVICE_FAILURE, POST_SERVICE_REQUIEST, POST_SERVICE_SUCCESS } from "./action"
 
 
 
@@ -16,6 +16,8 @@ const initState={
    deleteService:[],
    getDetail:[],
    deleteDep:[],
+   getDataService:[],
+   patchAssetData:[],
 }
 
 export const dataReducer=(state=initState,action)=>{
@@ -270,6 +272,50 @@ export const dataReducer=(state=initState,action)=>{
                                 isLoading:false,
                                 isError:true,           
                             })
+
+                            case GET_SERVICEDATA_REQUIEST:
+                                return({
+                                    ...state,
+                                    isLoading:true,
+                                    isError:false
+                                })
+                    
+                                case GET_SERVICEDATA_SUCCESS:
+                                return({
+                                    ...state,
+                                    isLoading:false,
+                                    isError:false,
+                                    getDataService:action.payload
+                                })
+                    
+                                case GET_SERVICEDATA_FAILURE:
+                                return({
+                                    ...state,
+                                    isLoading:false,
+                                    isError:true,           
+                                })
+
+                                case PATCH_ASSET_REQUIEST:
+                                return({
+                                    ...state,
+                                    isLoading:true,
+                                    isError:false
+                                })
+                    
+                                case PATCH_ASSET_SUCCESS:
+                                return({
+                                    ...state,
+                                    isLoading:false,
+                                    isError:false,
+                                    patchAssetData:action.payload
+                                })
+                    
+                                case PATCH_ASSET_FAILURE:
+                                return({
+                                    ...state,
+                                    isLoading:false,
+                                    isError:true,           
+                                })
     
 
 

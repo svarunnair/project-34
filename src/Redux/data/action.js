@@ -46,6 +46,14 @@ export const GET_DETAIL_REQUIEST="GET_DETAIL_REQUIEST"
 export const GET_DETAIL_SUCCESS="GET_DETAIL_SUCCESS"
 export const GET_DETAIL_FAILURE="GET_DETAIL_FAILURE"
 
+export const GET_SERVICEDATA_REQUIEST="GET_SERVICEDATA_REQUIEST"
+export const GET_SERVICEDATA_SUCCESS="GET_SERVICEDATA_SUCCESS"
+export const GET_SERVICEDATA_FAILURE="GET_SERVICEDATA_FAILURE"
+
+export const PATCH_ASSET_REQUIEST="PATCH_ASSET_REQUIEST"
+export const PATCH_ASSET_SUCCESS="PATCH_ASSET_SUCCESS"
+export const PATCH_ASSET_FAILURE="PATCH_ASSET_FAILURE"
+
 
 const postDepartmentRequiest=()=>{
     return({
@@ -236,6 +244,40 @@ const deleteServiceFailure=()=>{
     })
 }
 
+const getServiceDataRequiest=()=>{
+    return({
+        type:GET_SERVICEDATA_REQUIEST
+    })
+}
+const getServiceDataSuccess=(data)=>{
+    return({
+        type:GET_SERVICEDATA_SUCCESS,
+        payload:data
+    })
+}
+const getServiceDataFailure=()=>{
+    return({
+        type:GET_SERVICEDATA_FAILURE
+    })
+}
+
+const patchAssetRequiest=()=>{
+    return({
+        type:PATCH_ASSET_REQUIEST
+    })
+}
+const patchAssetSuccess=(data)=>{
+    return({
+        type:PATCH_ASSET_SUCCESS,
+        payload:data
+    })
+}
+const patchAssetFailure=()=>{
+    return({
+        type:PATCH_ASSET_FAILURE
+    })
+}
+
 
 
 
@@ -247,7 +289,7 @@ export const postDepartment=(data)=>(dispatch)=>{
     console.log("data",data)
     dispatch(postDepartmentRequiest())
     return axios({
-        url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
+        // url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
         method:"POST",
         data
     })
@@ -263,7 +305,7 @@ export const postDepartment=(data)=>(dispatch)=>{
 export const deleteDepartment=(id)=>(dispatch)=>{
     dispatch(deleteDepartmentRequiest())
     return axios({
-        url:`https://fine-cyan-pelican-cuff.cyclic.app/department/${id}`,
+        // url:`https://fine-cyan-pelican-cuff.cyclic.app/department/${id}`,
         method:"DELETE",
        
     })
@@ -294,8 +336,9 @@ export const getDetail=(id)=>(dispatch)=>{
 }
 
 export const patchService=(id,data)=>(dispatch)=>{
+    console.log("params,id",id,data)
     
-    dispatch(patchServiceRequiest())
+    dispatch(patchServiceRequiest()) 
     return axios({
         url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
         method:"PATCH",
@@ -422,5 +465,38 @@ export const deleteService=(id)=>(dispatch)=>{
     })
     .catch((error)=>{
         dispatch(deleteServiceFailure())
+    })
+}
+
+export const getServiceData=(id)=>(dispatch)=>{
+    console.log("idididi",id)
+    dispatch(getServiceDataRequiest())
+    return axios({
+        url: `https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
+        method:"GET",
+
+    })
+    .then((res)=>{
+        dispatch(getServiceDataSuccess(res.data))
+        console.log("ServiceData.ress",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getServiceDataFailure())
+    })
+}
+
+export const patchAsset=(id,data)=>(dispatch)=>{
+    dispatch(patchAssetRequiest())
+    return axios({
+        url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
+        method:"PATCH",
+        data
+    })
+    .then((res)=>{
+        dispatch(patchAssetSuccess(res.data))
+        console.log("patchAsset.res",res.data)
+    })
+    .catch((error)=>{
+        dispatch(patchAssetFailure())
     })
 }

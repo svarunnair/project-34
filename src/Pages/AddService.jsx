@@ -1,7 +1,7 @@
 import { Box, Button, Input, styled } from '@mui/material';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { patchService, postService } from '../Redux/data/action';
+import { patchAsset, patchService, postService } from '../Redux/data/action';
 import { useParams } from 'react-router-dom';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
@@ -59,7 +59,7 @@ function AddService() {
             status:status,
            
         }
-   dispatch(postService(data))
+   dispatch(patchAsset(params._id,data))
     }
 
   return (
