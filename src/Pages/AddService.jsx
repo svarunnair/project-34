@@ -5,7 +5,7 @@ import { patchService, postService } from '../Redux/data/action';
 import { useParams } from 'react-router-dom';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
-    // border: "1px solid yellow",
+    // border: "3px solid red",
   display:'flex',
   justifyContent:"center",
     [theme.breakpoints.down("xl")]: {},
@@ -59,7 +59,7 @@ function AddService() {
             status:status,
            
         }
-   dispatch(patchService(params._id,data))
+   dispatch(postService(data))
     }
 
   return (

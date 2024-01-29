@@ -294,6 +294,7 @@ export const getDetail=(id)=>(dispatch)=>{
 }
 
 export const patchService=(id,data)=>(dispatch)=>{
+    
     dispatch(patchServiceRequiest())
     return axios({
         url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
