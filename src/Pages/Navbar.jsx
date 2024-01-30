@@ -27,6 +27,21 @@ import { useNavigate } from 'react-router-dom';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
 
+
+const ImageBox = styled(Box)(({ theme }) => ({
+  // border:"2px solid red",
+  // // justifyContent: "center",
+  // display: "flex",
+  width:"5%",
+  
+
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -132,7 +147,7 @@ export default function Navbar() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-             
+             <ImageBox as={"img"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-qS5WgCwnLWW0DuBN5YVV77oXNDZFhmeog&usqp=CAU"/>
             </Typography>
             {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">

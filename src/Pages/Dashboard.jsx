@@ -41,7 +41,9 @@ const MenuBar = styled(Box)(({ theme }) => ({
   
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
-  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("md")]: {
+    display:"none",
+  },
   [theme.breakpoints.down("sm")]: {},
   [theme.breakpoints.down("xs")]: {},
 }));
@@ -53,6 +55,7 @@ const InnerContainer = styled(Box)(({ theme }) => ({
   padding:50,
   gap:20,
   background:"#FFFAF0",
+  borderRadius:20,
  
  
  
@@ -82,10 +85,14 @@ const TextMenu = styled(Typography)(({ theme }) => ({
   fontWeight:600,
   color:"white",
   padding:10,
+  cursor:"pointer",
+  ":hover":{color:"#87CEFA",},
  
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
-  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("md")]: {
+  
+  },
   [theme.breakpoints.down("sm")]: {},
   [theme.breakpoints.down("xs")]: {},
 }));

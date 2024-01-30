@@ -18,10 +18,14 @@ const InnerContainer = styled(Box)(({ theme }) => ({
     gap:130,
     padding:50,
     background:"#87CEFA",
+    
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
-    [theme.breakpoints.down("md")]: {},
+    [theme.breakpoints.down("md")]: {
+        display: "grid",
+        gridTemplateColumns:"repeat(2,1fr)",
+    },
     [theme.breakpoints.down("sm")]: {},
     [theme.breakpoints.down("xs")]: {},
   }));

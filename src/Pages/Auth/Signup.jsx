@@ -1,161 +1,118 @@
-import { Box, Button, Input, Typography, styled } from '@mui/material'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { postSignup } from '../../Redux/authRedux/authAction'
+import { Box, Button, Input, Typography, styled } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { postSignup } from "../../Redux/authRedux/authAction";
 
-
-const OuterContainer=styled(Box)(({theme})=>({
+const OuterContainer = styled(Box)(({ theme }) => ({
   // border:"2px solid red",
-  justifyContent:"center",
-  display:"flex",
- 
-    [theme.breakpoints.down("xl")]:{
-  
-    },
-    [theme.breakpoints.down("lg")]:{
-      
-    },
-    [theme.breakpoints.down("md")]:{
-      
-    },
-    [theme.breakpoints.down("sm")]:{
-      
-    },
-    [theme.breakpoints.down("xs")]:{
-      
-    },
-  }))
+  justifyContent: "center",
+  display: "flex",
 
-  const TextBox=styled(Typography)(({theme})=>({
-    // border:"2px solid yellow",
-    padding:10,
-    fontWeight:600,
-      [theme.breakpoints.down("xl")]:{
-    
-      },
-      [theme.breakpoints.down("lg")]:{
-        
-      },
-      [theme.breakpoints.down("md")]:{
-        
-      },
-      [theme.breakpoints.down("sm")]:{
-        
-      },
-      [theme.breakpoints.down("xs")]:{
-        
-      },
-    }))
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
 
+const TextBox = styled(Typography)(({ theme }) => ({
+  // border:"2px solid yellow",
+  padding: 10,
+  fontWeight: 600,
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
 
-    const ButtonBox=styled(Button)(({theme})=>({
-      // border:"2px solid red",
-        [theme.breakpoints.down("xl")]:{
-      
-        },
-        [theme.breakpoints.down("lg")]:{
-          
-        },
-        [theme.breakpoints.down("md")]:{
-          
-        },
-        [theme.breakpoints.down("sm")]:{
-          
-        },
-        [theme.breakpoints.down("xs")]:{
-          
-        },
-      }))
-    const InnerBox=styled(Box)(({theme})=>({
-      // border:"2px solid black",
-      display:"flex",
-      flexDirection:"column",
-      width:"50%",
-      justifyContent:"center",
-      paddingTop:70,
-        [theme.breakpoints.down("xl")]:{
-      
-        },
-        [theme.breakpoints.down("lg")]:{
-          
-        },
-        [theme.breakpoints.down("md")]:{
-          
-        },
-        [theme.breakpoints.down("sm")]:{
-          
-        },
-        [theme.breakpoints.down("xs")]:{
-          
-        },
-      }))
+const ButtonBox = styled(Button)(({ theme }) => ({
+  // border:"2px solid red",
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
+const InnerBox = styled(Box)(({ theme }) => ({
+  // border:"2px solid black",
+  display: "flex",
+  flexDirection: "column",
+  width: "50%",
+  justifyContent: "center",
+  paddingTop: 70,
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
 
 function Signup() {
+  const [hospital, setHospital] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [hospital,setHospital]=useState('')
-  const [name,setName]=useState('')
-  const [mobile,setMobile]=useState('')
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
-  
+  const handleHospital = (e) => {
+    let value = e.target.value;
+    setHospital(value);
+  };
+  const handleName = (e) => {
+    let value = e.target.value;
+    setName(value);
+  };
+  const handleMobile = (e) => {
+    let value = e.target.value;
+    setMobile(value);
+  };
+  const handleEmail = (e) => {
+    let value = e.target.value;
+    setEmail(value);
+  };
+  const handlePassword = (e) => {
+    let value = e.target.value;
+    setPassword(value);
+  };
+  const handleSignup = () => {
+    let data = {
+      hospital: hospital,
+      name: name,
+      mobile: mobile,
+      email: email,
+      password: password,
+    };
+    dispatch(postSignup(data));
+    navigate("/signin");
+  };
 
-
-  const handleHospital=(e)=>{
-    let value=e.target.value 
-    setHospital(value)
-  }
-  const handleName=(e)=>{
-    let value=e.target.value 
-    setName(value)
-  }
-  const handleMobile=(e)=>{
-    let value=e.target.value 
-    setMobile(value)
-  }
-  const handleEmail=(e)=>{
-    let value=e.target.value 
-    setEmail(value)
-  }
-  const handlePassword=(e)=>{
-    let value=e.target.value 
-    setPassword(value)
-  }
-  const handleSignup=()=>{
-    let data={
-      hospital:hospital,
-      name:name,
-      mobile:mobile,
-      email:email,
-      password:password,
-    }
-   dispatch(postSignup(data))
-   navigate('/signin')
-  }
-
-  const handleSignin=()=>{
-    navigate('/signin')
-  }
-  
+  const handleSignin = () => {
+    navigate("/signin");
+  };
 
   return (
     <OuterContainer>
-
-<InnerBox>
-<TextBox>Signup</TextBox>
-<Input onChange={handleHospital} placeholder='Hospital Name'/>
-<Input onChange={handleName} placeholder='Name'/>
-<Input onChange={handleMobile} placeholder='Mobile number'/>
-<Input onChange={handleEmail} placeholder='Email'/>
-<Input onChange={handlePassword} placeholder='Password'/>
-<ButtonBox onClick={handleSignup}>Signup</ButtonBox>
-<TextBox sx={{fontWeight:90,fontSize:15,cursor:"pointer"}} onClick={handleSignin}>For Signin</TextBox>
-</InnerBox>
-
+      <InnerBox>
+        <TextBox>Signup</TextBox>
+        <Input onChange={handleHospital} placeholder="Hospital Name" />
+        <Input onChange={handleName} placeholder="Name" />
+        <Input onChange={handleMobile} placeholder="Mobile number" />
+        <Input onChange={handleEmail} placeholder="Email" />
+        <Input onChange={handlePassword} placeholder="Password" />
+        <ButtonBox onClick={handleSignup}>Signup</ButtonBox>
+        <TextBox
+          sx={{ fontWeight: 90, fontSize: 15, cursor: "pointer" }}
+          onClick={handleSignin}
+        >
+          For Signin
+        </TextBox>
+      </InnerBox>
     </OuterContainer>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
