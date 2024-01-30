@@ -372,7 +372,7 @@ export const getService=()=>(dispatch)=>{
 export const postService=(data)=>(dispatch)=>{
     dispatch(postServiceRequiest())
     return axios({
-        url:"https://fine-cyan-pelican-cuff.cyclic.app/service",
+        // url:"https://fine-cyan-pelican-cuff.cyclic.app/service",
         method:"POST",
         data
     })
@@ -405,7 +405,7 @@ export const getAssets=()=>(dispatch)=>{
 export const getDepartment=()=>(dispatch)=>{
     dispatch(getDepartmentRequiest())
     return axios({
-        url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
+        // url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
         method:"GET",
     })
     .then((res)=>{
@@ -439,7 +439,7 @@ export const deleteAssetes=(id)=>(dispatch)=>{
   
     dispatch(deleteAssetsRequiest())
     return axios({
-        url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
+        // url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
         method:"DELETE",
         
     })
@@ -456,7 +456,7 @@ export const deleteService=(id)=>(dispatch)=>{
    
     dispatch(deleteServiceRequiest())
     return axios({
-        url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
+        // url:`https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
         method:"DELETE",
     })
     .then((res)=>{
@@ -472,7 +472,7 @@ export const getServiceData=(id)=>(dispatch)=>{
     console.log("idididi",id)
     dispatch(getServiceDataRequiest())
     return axios({
-        url: `https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
+        // url: `https://fine-cyan-pelican-cuff.cyclic.app/service/${id}`,
         method:"GET",
 
     })
@@ -488,7 +488,7 @@ export const getServiceData=(id)=>(dispatch)=>{
 export const patchAsset=(id,data)=>(dispatch)=>{
     dispatch(patchAssetRequiest())
     return axios({
-        url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
+        // url:`https://fine-cyan-pelican-cuff.cyclic.app/asset/${id}`,
         method:"PATCH",
         data
     })
