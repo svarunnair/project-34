@@ -62,6 +62,8 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     display:"grid",
     gridTemplateColumns:"repeat(3,1fr)",
     padding:30,
+    gap:30,
+
   
   
     [theme.breakpoints.down("xl")]: {},
@@ -126,6 +128,10 @@ function Assets() {
       navigate(`/addservice/${_id}`)
       
     }
+    
+    const handleIncident=(_id)=>{
+      navigate(`/addincident/${_id}`)
+    }
 
 
     useEffect(()=>{
@@ -151,8 +157,8 @@ function Assets() {
      
           <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleDelete(item._id)}>Delete</Button>
           <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleDetail(item._id)}>Details</Button>
-          <Button onClick={()=>handleEdit(item._id)} >Edit service</Button>
-
+          <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleEdit(item._id)} >Edit service</Button>
+          <Button sx={{":hover":{background:"#1E90FF",color:"white"}}} onClick={()=>handleIncident(item._id)} >Edit Incident</Button>
 
         </Mapdata>
       ))}

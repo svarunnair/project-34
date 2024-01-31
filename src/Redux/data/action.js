@@ -58,6 +58,10 @@ export const GET_INCIDENT_REQUIEST="GET_INCIDENT_REQUIEST"
 export const GET_INCIDENT_SUCCESS="GET_INCIDENT_SUCCESS"
 export const GET_INCIDENT_FAILURE="GET_INCIDENT_FAILURE"
 
+export const POST_INCIDENT_REQUIEST="POST_INCIDENT_REQUIEST"
+export const POST_INCIDENT_SUCCESS="POST_INCIDENT_SUCCESS"
+export const POST_INCIDENT_FAILURE="POST_INCIDENT_FAILURE"
+
 
 
 const postDepartmentRequiest=()=>{
@@ -301,6 +305,23 @@ const getIncidentFailure=()=>{
 }
 
 
+const postIncidentRequiest=()=>{
+    return({
+        type:POST_INCIDENT_REQUIEST
+    })
+}
+const postIncidentSuccess=(data)=>{
+    return({
+        type:POST_INCIDENT_SUCCESS,
+        payload:data
+    })
+}
+const postIncidentFailure=()=>{
+    return({
+        type:POST_INCIDENT_FAILURE
+    })
+}
+
 
 
 
@@ -535,5 +556,21 @@ export const getIncident=()=>(dispatch)=>{
     })
     .catch((error)=>{
         dispatch(getIncidentFailure())
+    })
+}
+
+export const postIncident=(data)=>(dispatch)=>{ 
+    dispatch(postIncidentRequiest())
+    return axios({
+        url:"https://fine-cyan-pelican-cuff.cyclic.app/incident",
+        method:"POST",
+        data
+    })
+    .then((res)=>{
+        dispatch(postIncidentSuccess(res.data))
+        console.log("postincident.ressss",res.data)
+    })
+    .catch((error)=>{
+        dispatch(postIncidentFailure())
     })
 }

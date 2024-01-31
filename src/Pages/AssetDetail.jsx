@@ -91,15 +91,7 @@ useEffect(()=>{
  <TextBox>Asset name : {assetDetail.asset_name}</TextBox> 
  <TextBox>Brand : {assetDetail.brand}</TextBox> 
  <TextBox>Department : {assetDetail.department}</TextBox> 
- {/* <TextBox> {assetDetail.service.map((item)=>(
-  <>
-  <TextBox>Service:</TextBox>
-  <TextBox>Issue :{item.issue}</TextBox>
-  <TextBox>Description :{item.description}</TextBox>
-  <TextBox>AssetId :{item. assetId}</TextBox>
-  
-  </>
- ))}</TextBox>  */}
+
  
   </MapData>
 
