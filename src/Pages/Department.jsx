@@ -76,6 +76,7 @@ const FirstBox = styled(Box)(({ theme }) => ({
    display:"grid",
    gridTemplateColumns:"repeat(3,1fr)",
    padding:50,
+   gap:30,
   
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -91,6 +92,8 @@ const FirstBox = styled(Box)(({ theme }) => ({
   const TextDetail = styled(Typography)(({ theme }) => ({
  display:"flex",
     textTransform:"none",
+    // justifyContent:"space-between",
+    // textAlign:"left",
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {},
@@ -130,6 +133,7 @@ function Department() {
     const navigate=useNavigate()
     const depData=useSelector((store)=>store.data.dep)
     const dispatch=useDispatch()
+  
 
 
     console.log("depData",depData)

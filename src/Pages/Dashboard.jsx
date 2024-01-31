@@ -54,7 +54,7 @@ const InnerContainer = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   padding:50,
   gap:20,
-  background:"#FFFAF0",
+  background:"#b0c4de",
   borderRadius:20,
  
  
@@ -67,10 +67,12 @@ const InnerContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TextData = styled(Button)(({ theme }) => ({
-  border: "1px solid #1E90FF",
+  border: "1px solid c",
   width: "100%",
   borderRadius:20,
   padding:10,
+  color:'#1E90FF',
+  background:"#FFFAF0",
   ":hover":{color:"white",background:"#1E90FF"},
 
   [theme.breakpoints.down("xl")]: {},

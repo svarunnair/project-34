@@ -54,6 +54,11 @@ export const PATCH_ASSET_REQUIEST="PATCH_ASSET_REQUIEST"
 export const PATCH_ASSET_SUCCESS="PATCH_ASSET_SUCCESS"
 export const PATCH_ASSET_FAILURE="PATCH_ASSET_FAILURE"
 
+export const GET_INCIDENT_REQUIEST="GET_INCIDENT_REQUIEST"
+export const GET_INCIDENT_SUCCESS="GET_INCIDENT_SUCCESS"
+export const GET_INCIDENT_FAILURE="GET_INCIDENT_FAILURE"
+
+
 
 const postDepartmentRequiest=()=>{
     return({
@@ -278,6 +283,23 @@ const patchAssetFailure=()=>{
     })
 }
 
+const getIncidentRequiest=()=>{
+    return({
+        type:GET_INCIDENT_REQUIEST
+    })
+}
+const getIncidentSuccess=(data)=>{
+    return({
+        type:GET_INCIDENT_SUCCESS,
+        payload:data
+    })
+}
+const getIncidentFailure=()=>{
+    return({
+        type:GET_INCIDENT_FAILURE
+    })
+}
+
 
 
 
@@ -405,7 +427,7 @@ export const getAssets=()=>(dispatch)=>{
 export const getDepartment=()=>(dispatch)=>{
     dispatch(getDepartmentRequiest())
     return axios({
-        // url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
+        url:"https://fine-cyan-pelican-cuff.cyclic.app/department",
         method:"GET",
     })
     .then((res)=>{
@@ -498,5 +520,20 @@ export const patchAsset=(id,data)=>(dispatch)=>{
     })
     .catch((error)=>{
         dispatch(patchAssetFailure())
+    })
+}
+
+export const getIncident=()=>(dispatch)=>{ 
+    dispatch(getIncidentRequiest())
+    return axios({
+        url:"https://fine-cyan-pelican-cuff.cyclic.app/incident",
+        method:"GET",
+    })
+    .then((res)=>{
+        dispatch(getIncidentSuccess(res.data))
+        console.log("GETincident.ressss",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getIncidentFailure())
     })
 }
