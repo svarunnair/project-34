@@ -125,7 +125,7 @@ function Dashboard() {
         <TextMenu>ENQUIERY</TextMenu>
         <TextMenu>ABOUT US</TextMenu>
         <TextMenu>BRANCHES</TextMenu>
-        <TextMenu>BOOOKING</TextMenu>
+      
         <TextMenu><MenuIcon/>MENU</TextMenu>
 
 
